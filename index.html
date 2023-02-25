@@ -5,9 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reel Movie Tracker</title>
+    <link rel="stylesheet" href="./styles/">
 </head>
 <body>
-    
+    <header>
+        <div class="wrapper">
+            <h1>Reel Movie Tracker</h1>
+        </div>
+    </header>
+    <main> 
+        <section class="form">
+            <div class="wrapper">
+                <form action="">
+                    <label for="movieTitle"></label>
+                    <input type="text" id="movieTitle" name="movieTitle" placeholder="Enter movie title..." required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="result">
+            <div class="wrapper">
+                <ul class="listOfMovies">
+
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="wrapper">
+            <p>Created by Tyler & Kyle at <a href="https://junocollege.com/">Juno College</a></p>
+        </div>
+    </footer>
 
     <!-- Link to script file -->
     <script type="module" src="./script.js"></script>
