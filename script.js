@@ -19,7 +19,7 @@ const submitHandler = function(event){
     event.preventDefault()
 
     // create variable userInput
-    const userInput = document.getElementById('movieTitle');
+    const userInput = document.querySelector('#inputMovieTitle');
     // create a variable for the value of userInput
     const movieInput = userInput.value;
 
@@ -29,11 +29,11 @@ const submitHandler = function(event){
         };
 
         push(dbref, movieObj)
+
+        // return value of userInput to empty string
+        formElement.reset();
     }
     // now we have to push the value of userinput to firebase db
-
-    // return value of userInput to empty string
-    formElement.reset();
 
 }
 
@@ -43,18 +43,25 @@ formElement.addEventListener('submit', submitHandler)
 // start of onValue module to track userInputs in REAL TIME
 
 onValue(dbref, (data) => {
-    // In the context of Firebase Realtime Database, the .exists property is used to check whether a document or snapshot exists in the database.
-    if(data.exists()){
-        const liElement = document.createElement('li')
 
-        // using get module to get our movie!
-        // get(dbref).then((snapshot) => {
+    // make a variable that contains data, using .val() to take a snapshot of the data
+    const movieData = data.val();
+    
+    // make an empty array which will add each movie title user enters
+    const movieArray = [];
 
-        // })
-
-        liElement.textContent = data.val();
-        ulElement.appendChild(liElement);
-    }else{
-        // tell the user there are no movies in the list somehow
+    for (let prop in movieData){
+        // create new li element
+        const liElement = document.createElement('li');
+        // console.log(data[prop])
+        liElement.textContent = (movieData[prop].movieTitle);
+        // push li element into movieArray we created above
+        movieArray.push(liElement.outerHTML)
     }
+    ulElement.innerHTML = movieArray.join('')
+
+
+
+    // In the context of Firebase Realtime Database, the .exists property is used to check whether a document or snapshot exists in the database.
+
 })

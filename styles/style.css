@@ -235,3 +235,12 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+ul {
+  list-style-type: none;
+}
+
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
