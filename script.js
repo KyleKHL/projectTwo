@@ -5,3 +5,4 @@ import { getDatabase, ref } from "https://www.gstatic.com/firebasejs/9.17.1/fire
 const database = getDatabase(firebaseInfo);
 // create reference to db content
 const dbref = ref(database);
+
