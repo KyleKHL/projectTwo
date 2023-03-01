@@ -1,0 +1,21 @@
+.formSection .wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.formContainer {
+    padding: 30px;
+    background-color: beige;
+    margin-top: 50px;
+    border-radius: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    input{
+        margin: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+}

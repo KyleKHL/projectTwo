@@ -1,0 +1,28 @@
+.result .wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.resultsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.listOfMovies {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.listOfMovies li {
+    margin: 10px 0;
+    background-color: beige;
+    padding: 20px;
+    width: 200%;
+    border-radius: 1rem;
+    font-family: 'Cabin', sans-serif;
+}

@@ -1,7 +1,15 @@
+body {
+    background-image: url(..//..//..//backgroundImage/jeremy-perkins-uhjiu8FjnsQ-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+
 h1 {
     font-family: 'Roboto Condensed',
         sans-serif;
     font-size: 3rem;
+    text-align: center;
 }
 
 p {
@@ -9,8 +17,14 @@ p {
     font-size: 1rem;
 }
 
+
+
 ul {
     list-style-type: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 .wrapper {

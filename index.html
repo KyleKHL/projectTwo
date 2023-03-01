@@ -11,27 +11,27 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <header>
-        <div class="wrapper">
-            <h1>Reel Movie Tracker</h1>
-        </div>
-    </header>
     <main> 
-        <section class="form">
+        <section class="formSection">
             <div class="wrapper">
-                <form action="">
-                    <label for="movieTitle"></label>
-                    <input type="text" id="inputMovieTitle" name="movieTitle" placeholder="Enter movie title..." required>
-                    <button type="submit">Submit</button>
-                </form>
+                <div class="formContainer">
+                    <h1>Reel Movie Tracker</h1>
+                    <form action="">
+                        <label for="movieTitle" class="sr-only">Enter movie title</label>
+                        <input type="text" id="inputMovieTitle" name="movieTitle" placeholder="Enter movie title..." required>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
             </div>
         </section>
 
         <section class="result">
             <div class="wrapper">
-                <ul class="listOfMovies">
+                <div class="resultsContainer">
+                    <ul class="listOfMovies">
 
-                </ul>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
