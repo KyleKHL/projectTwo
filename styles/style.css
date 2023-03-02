@@ -266,6 +266,11 @@ a {
   margin: 0 auto;
 }
 
+.deleteButton {
+  padding: 10px;
+  background-color: brown;
+}
+
 header .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -346,15 +351,26 @@ form input {
       -ms-flex-align: center;
           align-items: center;
   padding: 0;
+  width: 520px;
 }
 
 .listOfMovies li {
   margin: 10px 0;
   background-color: beige;
   padding: 20px;
-  width: 200%;
+  width: 100%;
   border-radius: 1rem;
   font-family: "Cabin", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+footer {
+  background-color: beige;
 }
 
 footer .wrapper {
@@ -366,8 +382,8 @@ footer .wrapper {
           justify-content: center;
 }
 footer .wrapper p {
-  color: white;
+  color: #2c2c2c;
 }
 footer .wrapper p a {
-  color: white;
+  color: #2c2c2c;
 }
