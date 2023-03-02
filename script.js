@@ -1,6 +1,6 @@
 import firebaseInfo from "./firebase.js";
 
-import { getDatabase, ref, push, onValue, get, remove } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+import { getDatabase, ref, push, onValue, get, remove, child } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 // initialize db content
 const database = getDatabase(firebaseInfo);
 // create reference to db content
@@ -80,19 +80,19 @@ ulElement.addEventListener('click', (event) => {
 
     if(event.target.tagName === 'BUTTON'){
             // console.log(event.target.parentElement)
-            // const liToBeDeleted = event.target.parentElement;
+            const liToBeDeleted = event.target.parentElement;
 
             liToBeDeleted.remove();
     }
 });
 
 // Get a snapshot of all data
-get(dbRef).then((snapshot) => {
-    // console.log()
-    if (snapshot.exists()) {
-        console.log(snapshot.val())
+// get(child(dbRef)).then((snapshot) => {
+//     // console.log()
+//     if (snapshot.exists()) {
+//         console.log(snapshot.val())
         
-    } else {
-        console.log('No data available')
-    }
-})
+//     } else {
+//         console.log('No data available')
+//     }
+// })
