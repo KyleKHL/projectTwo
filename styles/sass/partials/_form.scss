@@ -10,12 +10,20 @@
     border-radius: 1rem;
 }
 
+
 form {
     display: flex;
     flex-direction: column;
+    
     input{
         margin: 20px;
         padding: 10px;
         text-align: center;
     }
+    
 }
+.test1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }

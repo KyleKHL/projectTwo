@@ -26,7 +26,10 @@ const submitHandler = function(event){
     if (movieInput) {
         const movieObj = {
             movieTitle: movieInput,
-        };
+// *********** ADDED RATING to be sent to firebase w/ movie title ************
+            rating: document.querySelector('rating-select'),
+// ***************************************************************************
+    };
 
         push(dbref, movieObj)
 
@@ -38,6 +41,7 @@ const submitHandler = function(event){
 }
 
 formElement.addEventListener('submit', submitHandler)
+
 // end of form event listner
 
 // start of onValue module to track userInputs in REAL TIME
@@ -54,7 +58,8 @@ onValue(dbref, (data) => {
         // create new li element
         const liElement = document.createElement('li');
         // console.log(data[prop])
-        liElement.textContent = (movieData[prop].movieTitle);
+// ********** Changed (movieData[prop].movieTitle) to curly to add word Rating***
+        liElement.textContent = `${movieData[prop].movieTitle} - Rating: ${movieData[prop].rating}`;
         // push li element into movieArray we created above
         movieArray.push(liElement.outerHTML)
     }
@@ -65,3 +70,5 @@ onValue(dbref, (data) => {
     // In the context of Firebase Realtime Database, the .exists property is used to check whether a document or snapshot exists in the database.
 
 })
+
+
