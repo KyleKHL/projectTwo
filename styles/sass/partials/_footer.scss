@@ -1,10 +1,15 @@
+footer {
+    background-color: beige;
+}
+
 footer .wrapper {
     display: flex;
     justify-content: center;
     p {
-        color: white;
+        color: #2c2c2c;
+        text-align: center;
         a {
-            color: white;
+            color: #2c2c2c;
         }
     }
 }

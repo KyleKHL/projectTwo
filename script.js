@@ -1,10 +1,10 @@
 import firebaseInfo from "./firebase.js";
 
-import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+import { getDatabase, ref, push, onValue, get, remove, child } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 // initialize db content
 const database = getDatabase(firebaseInfo);
 // create reference to db content
-const dbref = ref(database);
+const dbRef = ref(database);
 
 // JS begins for MVP --> track them movies
 
@@ -16,7 +16,7 @@ const ulElement = document.querySelector('.listOfMovies')
 
 const submitHandler = function(event){
     // prevent form from refreshing
-    event.preventDefault()
+    event.preventDefault();
 
     // create variable userInput
     const userInput = document.querySelector('#inputMovieTitle');
@@ -37,10 +37,10 @@ const submitHandler = function(event){
 // *****************************************************
     };
 
-        push(dbref, movieObj)
+        push(dbRef, movieObj)
 
         // return value of userInput to empty string
-        userInput.value('');
+        userInput.value = '';
     }
     // now we have to push the value of userinput to firebase db
 
@@ -52,7 +52,7 @@ formElement.addEventListener('submit', submitHandler)
 
 // start of onValue module to track userInputs in REAL TIME
 
-onValue(dbref, (data) => {
+onValue(dbRef, (data) => {
 
     // make a variable that contains data, using .val() to take a snapshot of the data
     const movieData = data.val();
@@ -63,18 +63,71 @@ onValue(dbref, (data) => {
     for (let prop in movieData){
         // create new li element
         const liElement = document.createElement('li');
-        // console.log(data[prop])
-// ********** Changed (movieData[prop].movieTitle) to curly to add word Rating***
-        liElement.textContent = `${movieData[prop].movieTitle} - Rating: ${movieData[prop].rating}`;
+        // create variable to contain each movieObj
+        const propObj = prop;
+
+        // assign the id of each element with it's prop value -> the auto gen key
+        liElement.setAttribute("id", propObj);
+
+        // create new delete button
+        const deleteButton = document.createElement('button');
+        // add the fotn awesome 'x' icon
+        deleteButton.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        // give it class to give it a style
+        deleteButton.classList.add("deleteButton");
+
+        // create textnode with movie title contained in a variable
+        const movieTitleTextNode = document.createTextNode(movieData[prop].movieTitle);
+        const ratingTextNode = document.createTextNode(` |  Rating:    ${movieData[prop].rating}`);    
+        console.log(ratingTextNode)
+        
+        // liElement.textContent = `${movieData[prop].movieTitle} - Rating: ${movieData[prop].rating}`;
+        // append the text node and delete button to the li
+// *******appended popcornSpan
+        liElement.append(movieTitleTextNode, ratingTextNode, deleteButton)
+
         // push li element into movieArray we created above
         movieArray.push(liElement.outerHTML)
+
+
+        // ***************************** sorting start
+        // Sort through the movieObj based on the rating using a sort method
+        // movieArray.sort(function (a, b) {
+        //     return b.movieData[prop].rating - a.movieData[prop].rating
+        // })
+
+
+    // ***************************** sorting end
+
     }
+
+
     ulElement.innerHTML = movieArray.join('')
-
-
-
-    // In the context of Firebase Realtime Database, the .exists property is used to check whether a document or snapshot exists in the database.
 
 })
 
 
+
+// Use Event propagation to attach event listener to ul element in order to then use conditional statement to target the button of each li element
+ulElement.addEventListener('click', (event) => {
+
+    const removeFunc = (removeLi) => {
+        const liRef = ref(database, `/${removeLi}`)
+        remove(liRef);
+    }
+
+    if (event.target.tagName === 'I') {
+        const selectedLiId = event.target.parentElement.parentElement.id;
+        console.log('FIRE!', event.target.tagName, selectedLiId)
+
+            removeFunc(selectedLiId)
+
+        } else if (event.target.tagName === 'BUTTON') {
+        const selectedLiId = event.target.parentElement.id;
+
+        console.log('FIRE!', event.target.tagName, selectedLiId)
+
+        removeFunc(selectedLiId)
+    }
+
+});

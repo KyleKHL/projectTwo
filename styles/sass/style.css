@@ -232,9 +232,12 @@ html {
 }
 
 body {
-  background-image: url(..//..//..//backgroundImage/jeremy-perkins-uhjiu8FjnsQ-unsplash.jpg);
+  background-image: url(..//..//..//backgroundImage/jeremy-perkins-uhjiu8FjnsQ-unsplash\ Large.png);
   background-position: center;
-  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 
 h1 {
@@ -261,9 +264,10 @@ a {
   margin: 0 auto;
 }
 
-header .wrapper {
-  display: flex;
-  justify-content: center;
+.deleteButton {
+  padding: 3px 7px 0 7px;
+  background-color: brown;
+  color: white;
 }
 
 .formSection .wrapper {
@@ -281,11 +285,16 @@ header .wrapper {
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 form input {
   margin: 20px;
   padding: 10px;
   text-align: center;
+}
+form button {
+  border-radius: 1rem;
+  width: 80%;
 }
 
 .result .wrapper {
@@ -298,6 +307,7 @@ form input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .listOfMovies {
@@ -306,15 +316,24 @@ form input {
   justify-content: center;
   align-items: center;
   padding: 0;
+  width: 100%;
 }
 
 .listOfMovies li {
   margin: 10px 0;
   background-color: beige;
   padding: 20px;
-  width: 200%;
+  width: 100%;
   border-radius: 1rem;
   font-family: "Cabin", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 520px;
+}
+
+footer {
+  background-color: beige;
 }
 
 footer .wrapper {
@@ -322,8 +341,16 @@ footer .wrapper {
   justify-content: center;
 }
 footer .wrapper p {
-  color: white;
+  color: #2c2c2c;
+  text-align: center;
 }
 footer .wrapper p a {
-  color: white;
+  color: #2c2c2c;
+}
+
+@media (max-width: 360px) {
+  .formContainer {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }/*# sourceMappingURL=style.css.map */
