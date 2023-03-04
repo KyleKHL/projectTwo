@@ -6,8 +6,6 @@ const database = getDatabase(firebaseInfo);
 // create reference to db content
 const dbRef = ref(database);
 
-console.log(ref(database).object)
-
 // JS begins for MVP --> track them movies
 
 // create variables for what elements we will be using
@@ -18,12 +16,12 @@ const ulElement = document.querySelector('.listOfMovies')
 
 const submitHandler = function(event){
     // prevent form from refreshing
-    event.preventDefault()
+    event.preventDefault();
 
     // create variable userInput
     const userInput = document.querySelector('#inputMovieTitle');
     // create a variable for the value of userInput
-    const movieInput = userInput.value;
+    const movieInput = userInput.value.trim();
 
     if (movieInput) {
         const movieObj = {
@@ -33,7 +31,7 @@ const submitHandler = function(event){
         push(dbRef, movieObj)
 
         // return value of userInput to empty string
-        formElement.reset();
+        userInput.value = '';
     }
     // now we have to push the value of userinput to firebase db
 
@@ -55,44 +53,55 @@ onValue(dbRef, (data) => {
     for (let prop in movieData){
         // create new li element
         const liElement = document.createElement('li');
-        
+        // create variable to contain each movieObj
+        const propObj = prop;
+
+        // assign the id of each element with it's prop value -> the auto gen key
+        liElement.setAttribute("id", propObj);
+
         // create new delete button
         const deleteButton = document.createElement('button');
+        // add the fotn awesome 'x' icon
+        deleteButton.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+
         // give it class to give it a style
         deleteButton.classList.add("deleteButton");
 
         // create textnode with movie title contained in a variable
-        const movieTitleTextNode = document.createTextNode(movieData[prop].movieTitle)
+        const movieTitleTextNode = document.createTextNode(movieData[prop].movieTitle);
         // append the text node and delete button to the li
         liElement.append(movieTitleTextNode, deleteButton)
 
         // push li element into movieArray we created above
         movieArray.push(liElement.outerHTML)
+
     }
     ulElement.innerHTML = movieArray.join('')
 
 })
 
+
+
 // Use Event propagation to attach event listener to ul element in order to then use conditional statement to target the button of each li element
 ulElement.addEventListener('click', (event) => {
-    
-    // console.log(event.target.parentElement)
 
-    if(event.target.tagName === 'BUTTON'){
-            // console.log(event.target.parentElement)
-            const liToBeDeleted = event.target.parentElement;
-
-            liToBeDeleted.remove();
+    const removeFunc = (removeLi) => {
+        const liRef = ref(database, `/${removeLi}`)
+        remove(liRef);
     }
-});
 
-// Get a snapshot of all data
-// get(child(dbRef)).then((snapshot) => {
-//     // console.log()
-//     if (snapshot.exists()) {
-//         console.log(snapshot.val())
-        
-//     } else {
-//         console.log('No data available')
-//     }
-// })
+    if (event.target.tagName === 'I') {
+        const selectedLiId = event.target.parentElement.parentElement.id;
+        console.log('FIRE!', event.target.tagName, selectedLiId)
+
+            removeFunc(selectedLiId)
+
+        } else if (event.target.tagName === 'BUTTON') {
+        const selectedLiId = event.target.parentElement.id;
+
+        console.log('FIRE!', event.target.tagName, selectedLiId)
+
+        removeFunc(selectedLiId)
+    }
+
+});

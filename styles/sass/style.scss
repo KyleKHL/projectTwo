@@ -1,6 +1,11 @@
+// Global
 @use './partials/setup';
 @use './partials/global';
-@use './partials/header';
+
+// Page Content
 @use './partials/form';
 @use './partials/resultSection';
 @use './partials/footer';
+
+// Media Queries
+@use './partials/mediaQueries';

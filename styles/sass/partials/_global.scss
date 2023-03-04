@@ -1,7 +1,10 @@
 body {
-    background-image: url(..//..//..//backgroundImage/jeremy-perkins-uhjiu8FjnsQ-unsplash.jpg);
+    background-image: url(..//..//..//backgroundImage/jeremy-perkins-uhjiu8FjnsQ-unsplash\ Large.png);
     background-position: center;
-    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
 }
 
 
@@ -33,6 +36,8 @@ a {
 }
 
 .deleteButton {
-    padding: 10px;
+    padding: 3px 7px 0 7px;
     background-color: brown;
+    color: white;
+    
 }
