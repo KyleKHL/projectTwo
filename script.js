@@ -21,20 +21,26 @@ const submitHandler = function(event){
     // create variable userInput
     const userInput = document.querySelector('#inputMovieTitle');
     // create a variable for the value of userInput
-    const movieInput = userInput.value;
+    const movieInput = userInput.value.trim();
+// ********** create variable for rating *************
+    const ratingSelect = document.querySelector('#rating-select');
+    // *** create value for rating
+    const ratingValue = ratingSelect.value;
+// ****************************************************
 
     if (movieInput) {
         const movieObj = {
             movieTitle: movieInput,
-// *********** ADDED RATING to be sent to firebase w/ movie title ************
-            rating: document.querySelector('rating-select'),
-// ***************************************************************************
+// ********* ADDED RATING to be sent to firebase w/ movie title ************
+            // rating: document.querySelector('rating-select'),
+            rating: ratingValue
+// *****************************************************
     };
 
         push(dbref, movieObj)
 
         // return value of userInput to empty string
-        formElement.reset();
+        userInput.value('');
     }
     // now we have to push the value of userinput to firebase db
 
