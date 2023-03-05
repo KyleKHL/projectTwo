@@ -19,10 +19,28 @@ form {
         margin: 20px;
         padding: 10px;
         text-align: center;
+        width: 80%;
     }
     button{
         // border: none;
         border-radius: 1rem;
         width: 80%;
     }
+}
+
+.rating {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    padding-bottom: 25px;
+    label {
+        width: 100%;
+        text-align: start;
+        font-family: 'Cabin', sans-serif;
+        font-size: 1.2rem;
+    }
+    select {
+            width: 70%;
+        }
+
 }

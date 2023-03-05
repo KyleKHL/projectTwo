@@ -19,21 +19,20 @@
                 <div class="formContainer">
                     <h1>Reel Movie Tracker</h1>
                     <form action="">
-                        <div class="test1">
                             <label for="movieTitle" class="sr-only">Enter movie title</label>
-                            <input type="text" id="inputMovieTitle" name="movieTitle" placeholder="Enter movie title..." required>
+                            <input type="text" id="inputMovieTitle" name="movieTitle" placeholder="Enter movie title..." autofocus required>
                             <!-- Drop down Rating -->
                             <div class="rating">
-                                <label for="rating-select">Rate:</label>
-                                <select id="rating-select">
-                                <option value="1">1 - Terrible, don't waste your time.</option>
-                                <option value="2">2 - Not great, could be better.</option>
-                                <option value="3">3 - Average, nothing special but watchable.</option>
-                                <option value="4">4 - Good, worth watching.</option>
-                                <option value="5">5 - Excellent, highly recommended.</option>
+                                <label for="rating-select">Rating:</label>
+                                <select id="rating-select" required>
+                                    <option value="" selected disabled hidden>Choose a rating!</option>
+                                    <option data-rating="1" value="1">1 - Terrible, don't waste your time.</option>
+                                    <option data-rating="2" value="2">2 - Not great, could be better.</option>
+                                    <option data-rating="3" value="3">3 - Average, nothing special but watchable.</option>
+                                    <option data-rating="4" value="4">4 - Good, worth watching.</option>
+                                    <option data-rating="5" value="5">5 - Excellent, highly recommended.</option>
                                 </select>
                             </div>
-                        </div>
                         <button type="submit">Submit</button>
                     </form>
                 </div>

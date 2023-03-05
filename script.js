@@ -27,7 +27,6 @@ const submitHandler = function(event){
     // *** create value for rating
     const ratingValue = ratingSelect.value;
 // ****************************************************
-
     if (movieInput) {
         const movieObj = {
             movieTitle: movieInput,
@@ -41,6 +40,8 @@ const submitHandler = function(event){
 
         // return value of userInput to empty string
         userInput.value = '';
+        // return value or selected rating back to default: Choose a rating!
+        ratingSelect.value = '';
     }
     // now we have to push the value of userinput to firebase db
 
@@ -60,6 +61,9 @@ onValue(dbRef, (data) => {
     // make an empty array which will add each movie title user enters
     const movieArray = [];
 
+    // make a ratings array******************************
+    const ratingsArray = [];
+
     for (let prop in movieData){
         // create new li element
         const liElement = document.createElement('li');
@@ -77,33 +81,41 @@ onValue(dbRef, (data) => {
         deleteButton.classList.add("deleteButton");
 
         // create textnode with movie title contained in a variable
-        const movieTitleTextNode = document.createTextNode(movieData[prop].movieTitle);
-        const ratingTextNode = document.createTextNode(` |  Rating:    ${movieData[prop].rating}`);    
-        console.log(ratingTextNode)
+        const movieTitleTextNode = document.createTextNode(`${movieData[prop].movieTitle} | Rating: `);
+        const ratingTextNode = document.createTextNode(movieData[prop].rating);    
         
-        // liElement.textContent = `${movieData[prop].movieTitle} - Rating: ${movieData[prop].rating}`;
-        // append the text node and delete button to the li
-// *******appended popcornSpan
+        // append the text nodes and delete button to the li
         liElement.append(movieTitleTextNode, ratingTextNode, deleteButton)
 
+        // make value of each li equal to the rating
+        liElement.value = movieData[prop].rating;
+        
+        // push the li element into the ratings array
+        ratingsArray.push(liElement)
+
+        // Sort through the array based on the value of each li using a sort method
+        ratingsArray.sort(function (a, b){
+            return b.value - a.value;
+        })
+       
         // push li element into movieArray we created above
-        movieArray.push(liElement.outerHTML)
+        // movieArray.push(liElement.outerHTML)
 
-
-        // ***************************** sorting start
-        // Sort through the movieObj based on the rating using a sort method
-        // movieArray.sort(function (a, b) {
-        //     return b.movieData[prop].rating - a.movieData[prop].rating
-        // })
-
-
-    // ***************************** sorting end
 
     }
-
-
+    console.log(ratingsArray)
+    // ***************************** sorting start
+        
+    ratingsArray.forEach(liElement => {
+        const newLiElement = liElement.outerHTML;
+        console.log(newLiElement);
+        
+        // pushed into a new li element into movies array
+        movieArray.push(newLiElement)
+    });
+    // ***************************** sorting end
     ulElement.innerHTML = movieArray.join('')
-
+    // ulElement.innerHTML = ratingsArray.join('')
 })
 
 
@@ -118,15 +130,10 @@ ulElement.addEventListener('click', (event) => {
 
     if (event.target.tagName === 'I') {
         const selectedLiId = event.target.parentElement.parentElement.id;
-        console.log('FIRE!', event.target.tagName, selectedLiId)
-
             removeFunc(selectedLiId)
 
         } else if (event.target.tagName === 'BUTTON') {
         const selectedLiId = event.target.parentElement.id;
-
-        console.log('FIRE!', event.target.tagName, selectedLiId)
-
         removeFunc(selectedLiId)
     }
 
