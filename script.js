@@ -1,6 +1,6 @@
 import firebaseInfo from "./firebase.js";
 
-import { getDatabase, ref, push, onValue, get, remove, child } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 // initialize db content
 const database = getDatabase(firebaseInfo);
 // create reference to db content
@@ -91,31 +91,25 @@ onValue(dbRef, (data) => {
         liElement.value = movieData[prop].rating;
         
         // push the li element into the ratings array
-        ratingsArray.push(liElement)
+        ratingsArray.push(liElement);
 
         // Sort through the array based on the value of each li using a sort method
         ratingsArray.sort(function (a, b){
             return b.value - a.value;
+            
         })
-       
-        // push li element into movieArray we created above
-        // movieArray.push(liElement.outerHTML)
-
 
     }
-    console.log(ratingsArray)
     // ***************************** sorting start
         
     ratingsArray.forEach(liElement => {
         const newLiElement = liElement.outerHTML;
-        console.log(newLiElement);
-        
         // pushed into a new li element into movies array
         movieArray.push(newLiElement)
     });
     // ***************************** sorting end
-    ulElement.innerHTML = movieArray.join('')
-    // ulElement.innerHTML = ratingsArray.join('')
+    ulElement.innerHTML = movieArray.join('');
+    
 })
 
 

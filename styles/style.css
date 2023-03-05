@@ -322,16 +322,22 @@ form button {
 }
 
 .rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding-bottom: 25px;
 }
 .rating label {
-  width: 100%;
   text-align: start;
   font-family: "Cabin", sans-serif;
   font-size: 1.2rem;
 }
 .rating select {
-  width: 70%;
+  width: 80%;
+  padding: 10px;
 }
 
 .result .wrapper {

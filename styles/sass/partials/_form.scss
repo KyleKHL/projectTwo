@@ -29,18 +29,17 @@ form {
 }
 
 .rating {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
+    display: flex;
+    justify-content: center;
     padding-bottom: 25px;
     label {
-        width: 100%;
         text-align: start;
         font-family: 'Cabin', sans-serif;
         font-size: 1.2rem;
     }
     select {
-            width: 70%;
+            width: 80%;
+            padding: 10px;
         }
 
 }
