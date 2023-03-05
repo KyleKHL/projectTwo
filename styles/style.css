@@ -317,6 +317,11 @@ form input {
   width: 80%;
 }
 form button {
+  background-color: #456990;
+  border-color: #456990;
+  border-width: 3px;
+  padding: 5px 0;
+  color: beige;
   border-radius: 1rem;
   width: 80%;
 }
@@ -329,6 +334,7 @@ form button {
       -ms-flex-pack: center;
           justify-content: center;
   padding-bottom: 25px;
+  width: 100%;
 }
 .rating label {
   text-align: start;

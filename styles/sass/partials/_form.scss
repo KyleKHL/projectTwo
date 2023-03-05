@@ -22,7 +22,11 @@ form {
         width: 80%;
     }
     button{
-        // border: none;
+        background-color: #456990;
+        border-color: #456990;
+        border-width: 3px;
+        padding: 5px 0;
+        color: beige;
         border-radius: 1rem;
         width: 80%;
     }
@@ -32,6 +36,7 @@ form {
     display: flex;
     justify-content: center;
     padding-bottom: 25px;
+    width: 100%;
     label {
         text-align: start;
         font-family: 'Cabin', sans-serif;
