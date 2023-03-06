@@ -1,5 +1,5 @@
 body {
-    background-image: url(..//..//..//backgroundImage/jeremy-perkins-uhjiu8FjnsQ-unsplash\ Large.png);
+    background-image: url(../../../backgroundImage/jeremy-perkins-uhjiu8FjnsQ-unsplash-large.png);
     background-position: center;
     display: flex;
     flex-direction: column;
@@ -39,5 +39,12 @@ a {
     padding: 3px 7px 0 7px;
     background-color: brown;
     color: white;
-    
+}
+
+.deleteButton:hover {
+    background-color: red;
+}
+
+.deleteButton:focus {
+    background-color: red;
 }

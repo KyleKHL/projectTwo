@@ -70,7 +70,7 @@ onValue(dbRef, (data) => {
         // DELETE BUTTON
         // create new delete button
         const deleteButton = document.createElement('button');
-        // add the fotn awesome 'x' icon
+        // add the font awesome 'x' icon
         deleteButton.innerHTML = '<i class="fa-solid fa-xmark"></i>';
         // give delete button class to give it a style
         deleteButton.classList.add("deleteButton");

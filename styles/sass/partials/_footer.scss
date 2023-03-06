@@ -11,5 +11,13 @@ footer .wrapper {
         a {
             color: #2c2c2c;
         }
+        a:hover {
+            color: brown;
+            text-decoration: underline;
+        }
+        a:focus {
+            color: brown;
+            text-decoration: underline;
+        }
     }
 }

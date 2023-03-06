@@ -237,7 +237,7 @@ html {
 }
 
 body {
-  background-image: url(..//..//..//backgroundImage/jeremy-perkins-uhjiu8FjnsQ-unsplash\ Large.png);
+  background-image: url(../../../backgroundImage/jeremy-perkins-uhjiu8FjnsQ-unsplash-large.png);
   background-position: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -282,6 +282,14 @@ a {
   color: white;
 }
 
+.deleteButton:hover {
+  background-color: red;
+}
+
+.deleteButton:focus {
+  background-color: red;
+}
+
 .formSection .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -324,6 +332,12 @@ form button {
   color: beige;
   border-radius: 1rem;
   width: 80%;
+}
+form button:hover {
+  background-color: #136ed1;
+}
+form button:focus {
+  background-color: #136ed1;
 }
 
 .rating {
@@ -425,6 +439,14 @@ footer .wrapper p {
 }
 footer .wrapper p a {
   color: #2c2c2c;
+}
+footer .wrapper p a:hover {
+  color: brown;
+  text-decoration: underline;
+}
+footer .wrapper p a:focus {
+  color: brown;
+  text-decoration: underline;
 }
 
 @media (max-width: 360px) {

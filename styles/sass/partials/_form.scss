@@ -30,6 +30,12 @@ form {
         border-radius: 1rem;
         width: 80%;
     }
+    button:hover{
+        background-color: #136ed1;
+    }
+    button:focus{
+        background-color: #136ed1;
+    }
 }
 
 .rating {
